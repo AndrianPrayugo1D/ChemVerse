@@ -243,7 +243,7 @@ elif menu == "🧠 Kuis Kimia":
     st.header("🧪 SMART QUIZIZ")
     st.markdown("Uji pemahamanmu tentang konsep dasar kimia melalui kuis singkat berikut!")
 
-    # CSS styling untuk feedback jawaban
+    # CSS styling untuk feedback jawaban dan ucapan
     st.markdown("""
         <style>
         .feedback.benar {
@@ -263,6 +263,33 @@ elif menu == "🧠 Kuis Kimia":
             border-left: 5px solid #ff4444;
             border-radius: 5px;
             margin-bottom: 10px;
+        }
+        .ucapan.sukses {
+            background-color: rgba(0, 255, 128, 0.3);
+            color: #00ff88;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #00ff88;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .ucapan.info {
+            background-color: rgba(255, 255, 0, 0.2);
+            color: #ffe600;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #ffe600;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .ucapan.peringatan {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #ff4444;
+            border-radius: 8px;
+            margin-top: 10px;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -328,10 +355,10 @@ elif menu == "🧠 Kuis Kimia":
         st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
 
         # Ucapan berdasarkan skor
-       if score == 5:
-    st.balloons()
-    st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
-elif score >= 3:
-    st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
-else:
-    st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
+        if score == 5:
+            st.balloons()
+            st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
+        elif score >= 3:
+            st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
+        else:
+            st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
