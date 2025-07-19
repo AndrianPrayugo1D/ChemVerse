@@ -59,10 +59,13 @@ st.markdown("""
         background-color: #0099cc;
         color: white;
     }
-    div[role="radiogroup"] label {
-        color: white !important;
-        font-weight: bold;
-    }
+   div[role="radiogroup"] > label, 
+div[role="radiogroup"] span, 
+div[role="radiogroup"] div {
+    color: white !important;
+    font-weight: bold !important;
+}
+
     </style>
 """, unsafe_allow_html=True)
 
