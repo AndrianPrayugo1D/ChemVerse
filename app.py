@@ -362,9 +362,9 @@ elif menu == "🧠 Kuis Kimia":
             st.rerun()
 
 # ------------------ Footer ------------------
+# ------------------ Footer ------------------
 st.markdown("""
-<hr style="border:1px solid white; margin-top:50px; margin-bottom:10px;">
-<div style='text-align: center; color: white; font-size: 0.9rem;'>
+<div style='text-align: center; color: white; font-size: 0.9rem; margin-top: 50px;'>
     © 2025 ChemVerse | Dibuat oleh Kelompok 3
 </div>
 """, unsafe_allow_html=True)
