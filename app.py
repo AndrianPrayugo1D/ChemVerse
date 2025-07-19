@@ -245,50 +245,65 @@ elif menu == "🧠 Kuis Kimia":
 
     score = 0  # Nilai awal
 
-    # Question 1
+    # Soal 1
     st.subheader("1. Apa satuan dari molaritas?")
-    q1 = st.radio("Pilih jawaban:", ["mol", "mol/L", "gram", "L/mol"], key="q1")
-    if q1 == "mol/L":
-        score += 1
-
-    # Question 2
-    st.subheader("2. Seseorang melarutkan 10 gram NaCl (Mr = 58,5 g/mol) ke dalam air hingga larut sempurna. Berapakah jumlah mol NaCl yang terlarut?...")
-    q2 = st.radio("Pilih jawaban:", ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2")
-    if q2 == "0,17 mol":
-        score += 1
-
-    # Question 3
-    st.subheader("3. Rumus pengenceran larutan adalah...")
-    q3 = st.radio("Pilih jawaban:", ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3")
-    if q3 == "M1V1 = M2V2":
-        score += 1
-
-    # Question 4
-    st.subheader("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah...")
-    q4 = st.radio("Pilih jawaban:", ["3", "4", "7", "10"], key="q4")
-    if q4 == "3":
-        score += 1
-
-    # Question 5
-    st.subheader("5. Massa molar dari H₂O adalah...")
-    q5 = st.radio("Pilih jawaban:", ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5")
-    if q5 == "18 g/mol":
-        score += 1
-
-    # Tombol untuk submit jawaban
-    if st.button("Lihat Skor"):
-        st.markdown(f"<div class='custom-output'>Skor kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
-        if score == 5:
-            st.balloons()
-            st.success("🎉 Hebat! Kamu menguasai dasar-dasar kimia dengan sangat baik.")
-        elif score >= 3:
-            st.info("👍 Lumayan! Tingkatkan lagi pemahamanmu ya.")
+    q1 = st.radio("Pilih jawaban:", ["mol", "mol/L", "gram", "L/mol"], key="q1_auto")
+    if q1:
+        if q1 == "mol/L":
+            st.success("✅ Benar! Molaritas satuannya mol/L.")
+            score += 1
         else:
-            st.warning("📚 Yuk, belajar lagi. Jangan menyerah!")
+            st.error("❌ Salah. Jawaban yang benar adalah mol/L.")
 
-# ------------------ Footer ------------------
-st.markdown("---")
-st.markdown(
-    "<div style='text-align: center; color: white;'>© 2025 ChemVerse | Dibuat oleh Kelompok 3</div>",
-    unsafe_allow_html=True
-)
+    # Soal 2
+    st.subheader("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?")
+    q2 = st.radio("Pilih jawaban:", ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_auto")
+    if q2:
+        if q2 == "0,17 mol":
+            st.success("✅ Tepat! 10 / 58.5 ≈ 0.17 mol.")
+            score += 1
+        else:
+            st.error("❌ Salah. Jawaban yang benar adalah 0,17 mol.")
+
+    # Soal 3
+    st.subheader("3. Rumus pengenceran larutan adalah...")
+    q3 = st.radio("Pilih jawaban:", ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3_auto")
+    if q3:
+        if q3 == "M1V1 = M2V2":
+            st.success("✅ Betul! Itu rumus pengenceran larutan.")
+            score += 1
+        else:
+            st.error("❌ Salah. Yang benar adalah M1V1 = M2V2.")
+
+    # Soal 4
+    st.subheader("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah...")
+    q4 = st.radio("Pilih jawaban:", ["3", "4", "7", "10"], key="q4_auto")
+    if q4:
+        if q4 == "3":
+            st.success("✅ Tepat! pH = -log(10⁻³) = 3.")
+            score += 1
+        else:
+            st.error("❌ Salah. Jawabannya adalah 3.")
+
+    # Soal 5
+    st.subheader("5. Massa molar dari H₂O adalah...")
+    q5 = st.radio("Pilih jawaban:", ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_auto")
+    if q5:
+        if q5 == "18 g/mol":
+            st.success("✅ Benar! H (1×2) + O (16) = 18 g/mol.")
+            score += 1
+        else:
+            st.error("❌ Salah. Jawabannya adalah 18 g/mol.")
+
+    # Tampilkan skor secara langsung
+    st.markdown("---")
+    st.markdown(f"<div class='custom-output'>Skor kamu saat ini: {score} dari 5 soal</div>", unsafe_allow_html=True)
+
+    # Ucapan sesuai skor
+    if score == 5:
+        st.balloons()
+        st.success("🎉 Luar biasa! Kamu benar semua.")
+    elif score >= 3:
+        st.info("👍 Bagus! Tinggal sedikit lagi jadi ahli kimia.")
+    else:
+        st.warning("📚 Tetap semangat! Yuk, belajar lagi.")
