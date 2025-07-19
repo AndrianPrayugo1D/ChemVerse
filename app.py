@@ -45,8 +45,8 @@ st.markdown("""
         color: black !important;
         font-weight: bold;
         font-size: 1.1rem;
-        margin-bottom: 0px !important;  /* Hilangkan jarak bawah */
-        padding-bottom: 0px !important; /* Hilangkan padding bawah */
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
     }
     .stButton button {
         background-color: #00ccff;
@@ -243,7 +243,6 @@ elif menu == "🧠 Kuis Kimia":
     st.header("🧪 SMART QUIZIZ")
     st.markdown("Uji pemahamanmu tentang konsep dasar kimia melalui kuis singkat berikut!")
 
-    # CSS styling untuk feedback jawaban dan ucapan
     st.markdown("""
         <style>
         .feedback.benar {
@@ -294,11 +293,9 @@ elif menu == "🧠 Kuis Kimia":
         </style>
     """, unsafe_allow_html=True)
 
-    # State awal
     if "submitted" not in st.session_state:
         st.session_state["submitted"] = False
 
-    # Kuis Input
     q1 = st.radio("1. Apa satuan dari molaritas?", ["mol", "mol/L", "gram", "L/mol"], key="q1_submit")
     q2 = st.radio("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
                   ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_submit")
@@ -309,17 +306,14 @@ elif menu == "🧠 Kuis Kimia":
     q5 = st.radio("5. Massa molar dari H₂O adalah?",
                   ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_submit")
 
-    # Tombol Submit
     if st.button("Submit Jawaban"):
         st.session_state["submitted"] = True
 
-    # Setelah Submit
     if st.session_state["submitted"]:
         score = 0
         st.markdown("---")
         st.subheader("📋 Hasil Kuis:")
 
-        # Cek dan tampilkan feedback
         if q1 == "mol/L":
             st.markdown("<div class='feedback benar'>✅ 1. Benar! Molaritas satuannya mol/L.</div>", unsafe_allow_html=True)
             score += 1
@@ -350,11 +344,9 @@ elif menu == "🧠 Kuis Kimia":
         else:
             st.markdown("<div class='feedback salah'>❌ 5. Salah. Jawabannya adalah 18 g/mol.</div>", unsafe_allow_html=True)
 
-        # Skor akhir
         st.markdown("---")
         st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
 
-        # Ucapan motivasi
         if score == 5:
             st.balloons()
             st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
@@ -363,9 +355,16 @@ elif menu == "🧠 Kuis Kimia":
         else:
             st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
 
-        # Tombol ulangi kuis
         if st.button("Ulangi Kuis"):
             for k in list(st.session_state.keys()):
                 if k.startswith("q") or k == "submitted":
                     del st.session_state[k]
             st.rerun()
+
+# ------------------ Footer ------------------
+st.markdown("""
+<hr style="border:1px solid white; margin-top:50px; margin-bottom:10px;">
+<div style='text-align: center; color: white; font-size: 0.9rem;'>
+    © 2025 ChemVerse | Dibuat oleh Kelompok 3
+</div>
+""", unsafe_allow_html=True)
