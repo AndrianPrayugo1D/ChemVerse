@@ -294,11 +294,11 @@ elif menu == "🧠 Kuis Kimia":
         </style>
     """, unsafe_allow_html=True)
 
-    # State untuk tombol Submit
+    # State awal
     if "submitted" not in st.session_state:
         st.session_state["submitted"] = False
 
-    # Input kuis
+    # Kuis Input
     q1 = st.radio("1. Apa satuan dari molaritas?", ["mol", "mol/L", "gram", "L/mol"], key="q1_submit")
     q2 = st.radio("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
                   ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_submit")
@@ -309,17 +309,17 @@ elif menu == "🧠 Kuis Kimia":
     q5 = st.radio("5. Massa molar dari H₂O adalah?",
                   ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_submit")
 
-    # Submit button
+    # Tombol Submit
     if st.button("Submit Jawaban"):
         st.session_state["submitted"] = True
 
-    # Setelah submit
+    # Setelah Submit
     if st.session_state["submitted"]:
         score = 0
         st.markdown("---")
         st.subheader("📋 Hasil Kuis:")
 
-        # Penilaian & feedback custom
+        # Cek dan tampilkan feedback
         if q1 == "mol/L":
             st.markdown("<div class='feedback benar'>✅ 1. Benar! Molaritas satuannya mol/L.</div>", unsafe_allow_html=True)
             score += 1
@@ -354,7 +354,7 @@ elif menu == "🧠 Kuis Kimia":
         st.markdown("---")
         st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
 
-        # Ucapan berdasarkan skor
+        # Ucapan motivasi
         if score == 5:
             st.balloons()
             st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
@@ -362,3 +362,10 @@ elif menu == "🧠 Kuis Kimia":
             st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
         else:
             st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
+
+        # Tombol ulangi kuis
+        if st.button("Ulangi Kuis"):
+            for k in list(st.session_state.keys()):
+                if k.startswith("q") or k == "submitted":
+                    del st.session_state[k]
+            st.rerun()
