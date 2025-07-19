@@ -15,9 +15,7 @@ st.markdown("""
     header[data-testid="stHeader"] { background: transparent !important; }
     .block-container { padding-top: 1rem !important; }
     h1, h2, h3, h4, h5 { color: white !important; }
-    label, .stMarkdown, .stRadio, .stCheckbox {
-        color: white !important;
-    }
+    label, .stMarkdown { color: white !important; }
     input[type="number"], input[type="text"] {
         color: black !important;
         background-color: rgba(255,255,255,0.9) !important;
@@ -36,6 +34,19 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-image: linear-gradient(135deg, #cceeff 0%, #99ccff 100%);
         color: black;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    [data-testid="stSidebar"] .block-container {
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+    }
+    [data-testid="stSidebar"] .stMarkdown {
+        color: black !important;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0px !important;  /* Hilangkan jarak bawah */
+        padding-bottom: 0px !important; /* Hilangkan padding bawah */
     }
     .stButton button {
         background-color: #00ccff;
@@ -48,17 +59,9 @@ st.markdown("""
         background-color: #0099cc;
         color: white;
     }
-
-    /* FIX: Radio Button teks putih */
-    div[data-baseweb="radio"] label span,
-    div[data-baseweb="radio"] div[role="radio"] > div:last-child {
+    div[role="radiogroup"] label {
         color: white !important;
-        font-weight: 600 !important;
-    }
-
-    section > div > div > label,
-    section h2 {
-        color: white !important;
+        font-weight: bold;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -67,7 +70,8 @@ st.markdown("""
 st.title("🧪 ChemVerse (Kalkulator Kimia Digital)")
 
 # ------------------ Navigasi Sidebar ------------------
-menu = st.sidebar.selectbox("📘 Menu Navigasi", [
+st.sidebar.markdown("<p style='color: black; font-weight: bold;'>📘 Menu Navigasi</p>", unsafe_allow_html=True)
+menu = st.sidebar.selectbox("", [
     "🏠 Beranda",
     "👥 Tentang Kami",
     "ℹ️ Tentang Aplikasi",
@@ -239,35 +243,41 @@ elif menu == "🧠 Kuis Kimia":
     st.header("🧪 SMART QUIZIZ")
     st.markdown("Uji pemahamanmu tentang konsep dasar kimia melalui kuis singkat berikut!")
 
-    score = 0
+    score = 0  # Nilai awal
 
+    # Question 1
     st.subheader("1. Apa satuan dari molaritas?")
     q1 = st.radio("Pilih jawaban:", ["mol", "mol/L", "gram", "L/mol"], key="q1")
     if q1 == "mol/L":
         score += 1
 
-    st.subheader("2. Seseorang melarutkan 10 gram NaCl (Mr = 58,5 g/mol) ke dalam air hingga larut sempurna. Berapakah jumlah mol NaCl yang terlarut?")
+    # Question 2
+    st.subheader("2. Seseorang melarutkan 10 gram NaCl (Mr = 58,5 g/mol) ke dalam air hingga larut sempurna. Berapakah jumlah mol NaCl yang terlarut?...")
     q2 = st.radio("Pilih jawaban:", ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2")
     if q2 == "0,17 mol":
         score += 1
 
+    # Question 3
     st.subheader("3. Rumus pengenceran larutan adalah...")
     q3 = st.radio("Pilih jawaban:", ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3")
     if q3 == "M1V1 = M2V2":
         score += 1
 
+    # Question 4
     st.subheader("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah...")
     q4 = st.radio("Pilih jawaban:", ["3", "4", "7", "10"], key="q4")
     if q4 == "3":
         score += 1
 
+    # Question 5
     st.subheader("5. Massa molar dari H₂O adalah...")
     q5 = st.radio("Pilih jawaban:", ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5")
     if q5 == "18 g/mol":
         score += 1
 
+    # Tombol untuk submit jawaban
     if st.button("Lihat Skor"):
-        st.success(f"Skor kamu: {score} dari 5 soal")
+        st.markdown(f"<div class='custom-output'>Skor kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
         if score == 5:
             st.balloons()
             st.success("🎉 Hebat! Kamu menguasai dasar-dasar kimia dengan sangat baik.")
