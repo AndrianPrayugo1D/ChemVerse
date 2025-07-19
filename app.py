@@ -243,67 +243,77 @@ elif menu == "🧠 Kuis Kimia":
     st.header("🧪 SMART QUIZIZ")
     st.markdown("Uji pemahamanmu tentang konsep dasar kimia melalui kuis singkat berikut!")
 
-    score = 0  # Nilai awal
+    # State untuk tombol Submit
+    if "submitted" not in st.session_state:
+        st.session_state["submitted"] = False
 
-    # Soal 1
-    st.subheader("1. Apa satuan dari molaritas?")
-    q1 = st.radio("Pilih jawaban:", ["mol", "mol/L", "gram", "L/mol"], key="q1_auto")
-    if q1:
+    # Simpan jawaban user
+    q1 = st.radio("1. Apa satuan dari molaritas?", ["mol", "mol/L", "gram", "L/mol"], key="q1_submit")
+    q2 = st.radio("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
+                  ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_submit")
+    q3 = st.radio("3. Rumus pengenceran larutan adalah?",
+                  ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3_submit")
+    q4 = st.radio("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah?",
+                  ["3", "4", "7", "10"], key="q4_submit")
+    q5 = st.radio("5. Massa molar dari H₂O adalah?",
+                  ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_submit")
+
+    if st.button("Submit Jawaban"):
+        st.session_state["submitted"] = True
+
+    # Setelah tombol ditekan, tampilkan hasil dan skor
+    if st.session_state["submitted"]:
+        score = 0
+        st.markdown("---")
+        st.subheader("📋 Hasil Kuis:")
+
+        # Cek jawaban & tampilkan feedback
         if q1 == "mol/L":
-            st.success("✅ Benar! Molaritas satuannya mol/L.")
+            st.success("1. ✅ Benar! Molaritas satuannya mol/L.")
             score += 1
         else:
-            st.error("❌ Salah. Jawaban yang benar adalah mol/L.")
+            st.error("1. ❌ Salah. Jawaban yang benar adalah mol/L.")
 
-    # Soal 2
-    st.subheader("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?")
-    q2 = st.radio("Pilih jawaban:", ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_auto")
-    if q2:
         if q2 == "0,17 mol":
-            st.success("✅ Tepat! 10 / 58.5 ≈ 0.17 mol.")
+            st.success("2. ✅ Tepat! 10 / 58.5 ≈ 0.17 mol.")
             score += 1
         else:
-            st.error("❌ Salah. Jawaban yang benar adalah 0,17 mol.")
+            st.error("2. ❌ Salah. Jawaban yang benar adalah 0,17 mol.")
 
-    # Soal 3
-    st.subheader("3. Rumus pengenceran larutan adalah...")
-    q3 = st.radio("Pilih jawaban:", ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3_auto")
-    if q3:
         if q3 == "M1V1 = M2V2":
-            st.success("✅ Betul! Itu rumus pengenceran larutan.")
+            st.success("3. ✅ Betul! Itu rumus pengenceran larutan.")
             score += 1
         else:
-            st.error("❌ Salah. Yang benar adalah M1V1 = M2V2.")
+            st.error("3. ❌ Salah. Yang benar adalah M1V1 = M2V2.")
 
-    # Soal 4
-    st.subheader("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah...")
-    q4 = st.radio("Pilih jawaban:", ["3", "4", "7", "10"], key="q4_auto")
-    if q4:
         if q4 == "3":
-            st.success("✅ Tepat! pH = -log(10⁻³) = 3.")
+            st.success("4. ✅ Tepat! pH = -log(10⁻³) = 3.")
             score += 1
         else:
-            st.error("❌ Salah. Jawabannya adalah 3.")
+            st.error("4. ❌ Salah. Jawabannya adalah 3.")
 
-    # Soal 5
-    st.subheader("5. Massa molar dari H₂O adalah...")
-    q5 = st.radio("Pilih jawaban:", ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_auto")
-    if q5:
         if q5 == "18 g/mol":
-            st.success("✅ Benar! H (1×2) + O (16) = 18 g/mol.")
+            st.success("5. ✅ Benar! H (1×2) + O (16) = 18 g/mol.")
             score += 1
         else:
-            st.error("❌ Salah. Jawabannya adalah 18 g/mol.")
+            st.error("5. ❌ Salah. Jawabannya adalah 18 g/mol.")
 
-    # Tampilkan skor secara langsung
-    st.markdown("---")
-    st.markdown(f"<div class='custom-output'>Skor kamu saat ini: {score} dari 5 soal</div>", unsafe_allow_html=True)
+        # Tampilkan skor akhir
+        st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
 
-    # Ucapan sesuai skor
-    if score == 5:
-        st.balloons()
-        st.success("🎉 Luar biasa! Kamu benar semua.")
-    elif score >= 3:
-        st.info("👍 Bagus! Tinggal sedikit lagi jadi ahli kimia.")
-    else:
-        st.warning("📚 Tetap semangat! Yuk, belajar lagi.")
+        # Reaksi skor
+        if score == 5:
+            st.balloons()
+            st.success("🎉 Hebat! Kamu benar semua.")
+        elif score >= 3:
+            st.info("👍 Bagus! Tinggal sedikit lagi jadi master kimia.")
+        else:
+            st.warning("📚 Ayo semangat lagi, kamu pasti bisa!")
+
+        # Tombol reset kuis
+        if st.button("Ulangi Kuis"):
+            for key in ["q1_submit", "q2_submit", "q3_submit", "q4_submit", "q5_submit"]:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.session_state["submitted"] = False
+            st.rerun()
