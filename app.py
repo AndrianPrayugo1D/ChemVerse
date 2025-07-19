@@ -328,18 +328,10 @@ elif menu == "🧠 Kuis Kimia":
         st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
 
         # Ucapan berdasarkan skor
-        if score == 5:
-            st.balloons()
-            st.success("🎉 Hebat! Kamu benar semua.")
-        elif score >= 3:
-            st.info("👍 Bagus! Tinggal sedikit lagi jadi master kimia.")
-        else:
-            st.warning("📚 Yuk belajar lagi, kamu pasti bisa!")
-
-        # Tombol reset
-        if st.button("Ulangi Kuis"):
-            for key in ["q1_submit", "q2_submit", "q3_submit", "q4_submit", "q5_submit"]:
-                if key in st.session_state:
-                    del st.session_state[key]
-            st.session_state["submitted"] = False
-            st.rerun()
+       if score == 5:
+    st.balloons()
+    st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
+elif score >= 3:
+    st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
+else:
+    st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
