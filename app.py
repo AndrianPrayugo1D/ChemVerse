@@ -122,56 +122,43 @@ elif menu == "ℹ️ Tentang Aplikasi":
 ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.
         """)
 
-    elif tab == "🔍 Latar Belakang":
+        elif tab == "🔍 Latar Belakang":
         st.markdown("""
-        Perkembangan teknologi digital dalam era Revolusi Industri 4.0 telah mendorong transformasi di berbagai bidang,
-termasuk dalam dunia pendidikan dan laboratorium sains. Salah satu bidang yang turut merasakan dampaknya adalah ilmu
-kimia, yang dalam praktiknya memerlukan perhitungan-perhitungan kompleks seperti perhitungan mol, konsentrasi, pH,
-dan pengenceran larutan. Perhitungan tersebut seringkali memakan waktu dan rawan terjadi kesalahan apabila dilakukan
-secara manual, terutama oleh mahasiswa atau praktikan di laboratorium pendidikan. Dalam rangka mengatasi
-permasalahan tersebut, diperlukan suatu inovasi berbasis teknologi yang dapat membantu mempermudah dan mempercepat
-proses perhitungan kimia secara akurat dan efisien. Salah satu solusi yang dapat diimplementasikan adalah pembuatan
-aplikasi kalkulator kimia berbasis web yang bersifat interaktif dan mudah diakses.
-        Python merupakan bahasa pemrograman yang populer dan fleksibel, serta memiliki berbagai pustaka yang mendukung
-pengembangan aplikasi berbasis sains. Di sisi lain, Streamlit merupakan sebuah framework Python yang memungkinkan
-pembuatan antarmuka web secara cepat dan sederhana, tanpa memerlukan pengetahuan mendalam tentang pengembangan
-front-end. Dengan menggabungkan Python dan Streamlit, aplikasi kalkulator kimia ini dirancang untuk membantu
-pengguna, khususnya mahasiswa dan tenaga pendidik, dalam melakukan perhitungan kimia dasar secara otomatis,
-interaktif, dan user-friendly. Aplikasi ini diharapkan dapat menjadi alat bantu edukatif yang mendukung kegiatan
-praktikum dan pembelajaran kimia secara digital dan modern.
-        Ilmu kimia merupakan salah satu cabang sains yang berperan penting dalam berbagai bidang kehidupan, mulai dari
-industri, kesehatan, pertanian, hingga pendidikan. Dalam proses pembelajaran dan praktik di laboratorium, mahasiswa dan
-praktikan seringkali dihadapkan pada kebutuhan untuk melakukan berbagai perhitungan kimia yang kompleks dan
-berulang, seperti perhitungan mol, konsentrasi larutan, pH, pengenceran, serta massa molar suatu senyawa. Sayangnya,
-proses perhitungan ini tidak jarang menimbulkan kesulitan tersendiri, terutama bagi mahasiswa yang masih dalam tahap
-pemahaman konsep dasar.
-Permasalahan umum yang sering ditemui di lapangan antara lain:
-• Kesalahan perhitungan manual akibat kurangnya ketelitian atau pemahaman konsep.
-• Keterbatasan waktu saat praktikum, sehingga praktikan sulit menyelesaikan perhitungan secara cepat.
-• Minimnya alat bantu digital yang praktis, interaktif, dan mudah diakses untuk mendukung kegiatan belajar maupun
-praktikum kimia.
-Melihat permasalahan tersebut, diperlukan sebuah solusi berbasis teknologi yang mampu mengotomatisasi proses
-perhitungan, memberikan hasil yang cepat dan akurat, serta dapat digunakan secara fleksibel kapan saja dan di mana saja.
-Maka dari itu, dibuatlah sebuah proyek web aplikasi kalkulator kimia yang bertujuan untuk menjawab kebutuhan
-tersebut. Pembuatan aplikasi ini menggunakan bahasa pemrograman Python karena kemampuannya yang kuat dalam
-pengolahan data numerik dan kemudahan integrasinya dengan berbagai pustaka sains. Untuk antarmuka dan aksesibilitas
-berbasis web, digunakan Streamlit, sebuah framework Python yang memungkinkan pembuatan aplikasi web secara cepat
-dan intuitif tanpa perlu keahlian desain web yang kompleks.
-Aplikasi ini dirancang agar dapat digunakan oleh:
-• Mahasiswa atau siswa yang sedang belajar kimia.
-• Guru dan dosen sebagai alat bantu pembelajaran.
-• Praktikan laboratorium untuk mempercepat perhitungan saat eksperimen.
-Fitur utama yang direncanakan dalam aplikasi ini mencakup:
-• Kalkulasi mol, massa molar, konsentrasi (% b/b, b/v, v/v), dan pengenceran larutan.
-• Perhitungan pH untuk larutan asam dan basa kuat maupun lemah.
-• Antarmuka sederhana dan ramah pengguna (user-friendly).
-• Hasil perhitungan yang cepat dan akurat.
-Dengan memanfaatkan teknologi digital yang tersedia, proyek ini diharapkan dapat menjadi solusi praktis sekaligus
-mendukung integrasi pembelajaran kimia dengan inovasi teknologi, sejalan dengan semangat Revolusi Industri 4.0 yang
-menekankan kolaborasi antara ilmu pengetahuan dan teknologi informasi.
+        Perkembangan teknologi digital dalam era Revolusi Industri 4.0 telah mendorong transformasi di berbagai bidang, termasuk dalam dunia pendidikan dan laboratorium sains. Salah satu bidang yang turut merasakan dampaknya adalah ilmu kimia, yang dalam praktiknya memerlukan perhitungan kompleks seperti perhitungan mol, konsentrasi, pH, dan pengenceran larutan.
 
+        Perhitungan tersebut sering kali memakan waktu dan rawan terjadi kesalahan apabila dilakukan secara manual, terutama oleh mahasiswa atau praktikan di laboratorium pendidikan. Oleh karena itu, diperlukan suatu inovasi berbasis teknologi yang dapat membantu mempermudah dan mempercepat proses perhitungan kimia secara akurat dan efisien.
 
+        Salah satu solusi yang dapat diimplementasikan adalah pembuatan aplikasi kalkulator kimia berbasis web yang bersifat interaktif dan mudah diakses. Python merupakan bahasa pemrograman yang populer dan fleksibel, serta memiliki berbagai pustaka yang mendukung pengembangan aplikasi berbasis sains.
+
+        Di sisi lain, Streamlit merupakan sebuah framework Python yang memungkinkan pembuatan antarmuka web secara cepat dan sederhana, tanpa memerlukan pengetahuan mendalam tentang pengembangan front-end. Dengan menggabungkan Python dan Streamlit, aplikasi kalkulator kimia ini dirancang untuk membantu pengguna — khususnya mahasiswa dan tenaga pendidik — dalam melakukan perhitungan kimia dasar secara otomatis, interaktif, dan user-friendly.
+
+        Ilmu kimia merupakan salah satu cabang sains yang berperan penting dalam berbagai bidang kehidupan, mulai dari industri, kesehatan, pertanian, hingga pendidikan. Dalam proses pembelajaran dan praktik di laboratorium, mahasiswa dan praktikan sering kali dihadapkan pada kebutuhan untuk melakukan berbagai perhitungan kimia yang kompleks dan berulang, seperti perhitungan mol, konsentrasi larutan, pH, pengenceran, serta massa molar suatu senyawa.
+
+        Sayangnya, proses perhitungan ini tidak jarang menimbulkan kesulitan tersendiri, terutama bagi mahasiswa yang masih dalam tahap pemahaman konsep dasar.
+
+        **Permasalahan umum yang sering ditemui di lapangan antara lain:**
+        - Kesalahan perhitungan manual akibat kurangnya ketelitian atau pemahaman konsep.
+        - Keterbatasan waktu saat praktikum, sehingga praktikan sulit menyelesaikan perhitungan secara cepat.
+        - Minimnya alat bantu digital yang praktis, interaktif, dan mudah diakses untuk mendukung kegiatan belajar maupun praktikum kimia.
+
+        Melihat permasalahan tersebut, diperlukan sebuah solusi berbasis teknologi yang mampu mengotomatisasi proses perhitungan, memberikan hasil yang cepat dan akurat, serta dapat digunakan secara fleksibel kapan saja dan di mana saja. Maka dari itu, dibuatlah sebuah proyek web aplikasi kalkulator kimia yang bertujuan untuk menjawab kebutuhan tersebut.
+
+        Pembuatan aplikasi ini menggunakan bahasa pemrograman **Python** karena kemampuannya yang kuat dalam pengolahan data numerik dan kemudahan integrasinya dengan berbagai pustaka sains. Untuk antarmuka dan aksesibilitas berbasis web, digunakan **Streamlit**, sebuah framework Python yang memungkinkan pembuatan aplikasi web secara cepat dan intuitif tanpa perlu keahlian desain web yang kompleks.
+
+        **Aplikasi ini dirancang agar dapat digunakan oleh:**
+        - Mahasiswa atau siswa yang sedang belajar kimia.  
+        - Guru dan dosen sebagai alat bantu pembelajaran.  
+        - Praktikan laboratorium untuk mempercepat perhitungan saat eksperimen.
+
+        **Fitur utama yang direncanakan dalam aplikasi ini mencakup:**
+        - Kalkulasi mol, massa molar, konsentrasi (% b/b, b/v, v/v), dan pengenceran larutan.  
+        - Perhitungan pH untuk larutan asam dan basa kuat maupun lemah.  
+        - Antarmuka sederhana dan ramah pengguna (user-friendly).  
+        - Hasil perhitungan yang cepat dan akurat.
+
+        Dengan memanfaatkan teknologi digital yang tersedia, proyek ini diharapkan dapat menjadi solusi praktis sekaligus mendukung integrasi pembelajaran kimia dengan inovasi teknologi. Hal ini sejalan dengan semangat **Revolusi Industri 4.0**, yang menekankan kolaborasi antara ilmu pengetahuan dan teknologi informasi.
         """)
+
 
     elif tab == "🎯 Tujuan":
         st.markdown("""
