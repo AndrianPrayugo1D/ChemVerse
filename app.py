@@ -119,8 +119,8 @@ elif menu == "ℹ️ Tentang Aplikasi":
 
     if tab == "🧪 Deskripsi":
         st.markdown("""
-        ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas.  
-        Aplikasi ini dirancang untuk membantu dalam perhitungan mol, pH, pengenceran larutan, dan persentase konsentrasi dengan cepat dan akurat.
+       *📌 Deskripsi*
+ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.  
         """)
 
     elif tab == "🔍 Latar Belakang":
