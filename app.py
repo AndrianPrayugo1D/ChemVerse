@@ -119,10 +119,10 @@ elif menu == "ℹ️ Tentang Aplikasi":
 
     if tab == "🧪 Deskripsi":
         st.markdown("""
-ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.
+        ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.
         """)
 
-        elif tab == "🔍 Latar Belakang":
+    elif tab == "🔍 Latar Belakang":
         st.markdown("""
         Perkembangan teknologi digital dalam era Revolusi Industri 4.0 telah mendorong transformasi di berbagai bidang, termasuk dalam dunia pendidikan dan laboratorium sains. Salah satu bidang yang turut merasakan dampaknya adalah ilmu kimia, yang dalam praktiknya memerlukan perhitungan kompleks seperti perhitungan mol, konsentrasi, pH, dan pengenceran larutan.
 
@@ -159,12 +159,11 @@ ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, da
         Dengan memanfaatkan teknologi digital yang tersedia, proyek ini diharapkan dapat menjadi solusi praktis sekaligus mendukung integrasi pembelajaran kimia dengan inovasi teknologi. Hal ini sejalan dengan semangat **Revolusi Industri 4.0**, yang menekankan kolaborasi antara ilmu pengetahuan dan teknologi informasi.
         """)
 
-
     elif tab == "🎯 Tujuan":
         st.markdown("""
         1. Mempermudah perhitungan kimia dasar.  
         2. Meningkatkan pemahaman konsep mol, pH, pengenceran, dan konsentrasi.  
-        3. Menghemat waktu dalam kegiatan laboratorium.
+        3. Menghemat waktu dalam kegiatan laboratorium.  
         4. Menyediakan alat bantu praktis dan responsif untuk pelajar dan mahasiswa.
         """)
 
@@ -180,8 +179,9 @@ ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, da
         st.markdown("""
         1. Membantu proses belajar dan praktikum secara mandiri maupun kelompok.  
         2. Menurunkan tingkat kesalahan hitung manual, sehingga hasil perhitungan yang didapat akurat.  
-        3. Menghemat waktu dalam analisis kimia.  
+        3. Menghemat waktu dalam analisis kimia.
         """)
+
 
 # ------------------ Hitung Mol ------------------
 elif menu == "🧪 Hitung Mol":
