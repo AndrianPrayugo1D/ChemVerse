@@ -124,8 +124,28 @@ ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, da
 
     elif tab == "🔍 Latar Belakang":
         st.markdown("""
-        Di era Revolusi Industri 4.0, integrasi teknologi ke dalam dunia pendidikan dan laboratorium sangat penting.  
-        ChemVerse hadir sebagai solusi untuk mempermudah dan mempercepat proses perhitungan kimia dasar secara digital.
+        Perkembangan teknologi digital dalam era Revolusi Industri 4.0 telah mendorong transformasi di berbagai bidang,
+termasuk dalam dunia pendidikan dan laboratorium sains. Salah satu bidang yang turut merasakan dampaknya adalah ilmu
+kimia, yang dalam praktiknya memerlukan perhitungan-perhitungan kompleks seperti perhitungan mol, konsentrasi, pH,
+dan pengenceran larutan. Perhitungan tersebut seringkali memakan waktu dan rawan terjadi kesalahan apabila dilakukan
+secara manual, terutama oleh mahasiswa atau praktikan di laboratorium pendidikan. Dalam rangka mengatasi
+permasalahan tersebut, diperlukan suatu inovasi berbasis teknologi yang dapat membantu mempermudah dan mempercepat
+proses perhitungan kimia secara akurat dan efisien. Salah satu solusi yang dapat diimplementasikan adalah pembuatan
+aplikasi kalkulator kimia berbasis web yang bersifat interaktif dan mudah diakses.
+        Python merupakan bahasa pemrograman yang populer dan fleksibel, serta memiliki berbagai pustaka yang mendukung
+pengembangan aplikasi berbasis sains. Di sisi lain, Streamlit merupakan sebuah framework Python yang memungkinkan
+pembuatan antarmuka web secara cepat dan sederhana, tanpa memerlukan pengetahuan mendalam tentang pengembangan
+front-end. Dengan menggabungkan Python dan Streamlit, aplikasi kalkulator kimia ini dirancang untuk membantu
+pengguna, khususnya mahasiswa dan tenaga pendidik, dalam melakukan perhitungan kimia dasar secara otomatis,
+interaktif, dan user-friendly. Aplikasi ini diharapkan dapat menjadi alat bantu edukatif yang mendukung kegiatan
+praktikum dan pembelajaran kimia secara digital dan modern.
+        Ilmu kimia merupakan salah satu cabang sains yang berperan penting dalam berbagai bidang kehidupan, mulai dari
+industri, kesehatan, pertanian, hingga pendidikan. Dalam proses pembelajaran dan praktik di laboratorium, mahasiswa dan
+praktikan seringkali dihadapkan pada kebutuhan untuk melakukan berbagai perhitungan kimia yang kompleks dan
+berulang, seperti perhitungan mol, konsentrasi larutan, pH, pengenceran, serta massa molar suatu senyawa. Sayangnya,
+proses perhitungan ini tidak jarang menimbulkan kesulitan tersendiri, terutama bagi mahasiswa yang masih dalam tahap
+pemahaman konsep dasar.
+
         """)
 
     elif tab == "🎯 Tujuan":
