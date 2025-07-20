@@ -166,6 +166,10 @@ Fitur utama yang direncanakan dalam aplikasi ini mencakup:
 • Perhitungan pH untuk larutan asam dan basa kuat maupun lemah.
 • Antarmuka sederhana dan ramah pengguna (user-friendly).
 • Hasil perhitungan yang cepat dan akurat.
+Dengan memanfaatkan teknologi digital yang tersedia, proyek ini diharapkan dapat menjadi solusi praktis sekaligus
+mendukung integrasi pembelajaran kimia dengan inovasi teknologi, sejalan dengan semangat Revolusi Industri 4.0 yang
+menekankan kolaborasi antara ilmu pengetahuan dan teknologi informasi.
+
 
         """)
 
