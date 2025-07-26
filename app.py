@@ -424,105 +424,114 @@ elif menu == "🧠 Kuis Kimia":
             border-radius: 5px;
             margin-bottom: 10px;
         }
-        .ucapan.sukses {
-            background-color: rgba(0, 255, 128, 0.3);
-            color: #00ff88;
-            font-weight: bold;
-            padding: 12px;
-            border-left: 5px solid #00ff88;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        .ucapan.info {
-            background-color: rgba(255, 255, 0, 0.2);
-            color: #ffe600;
-            font-weight: bold;
-            padding: 12px;
-            border-left: 5px solid #ffe600;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        .ucapan.peringatan {
-            background-color: rgba(255, 0, 0, 0.2);
-            color: #ff4444;
-            font-weight: bold;
-            padding: 12px;
-            border-left: 5px solid #ff4444;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
         </style>
     """, unsafe_allow_html=True)
 
     if "submitted" not in st.session_state:
         st.session_state["submitted"] = False
 
-    q1 = st.radio("1. Apa satuan dari molaritas?", ["mol", "mol/L", "gram", "L/mol"], key="q1_submit")
-    q2 = st.radio("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
-                  ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_submit")
-    q3 = st.radio("3. Rumus pengenceran larutan adalah?",
-                  ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3_submit")
-    q4 = st.radio("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah?",
-                  ["3", "4", "7", "10"], key="q4_submit")
-    q5 = st.radio("5. Massa molar dari H₂O adalah?",
-                  ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_submit")
+    # Pertanyaan Kuis
+    pertanyaan = [
+        {
+            "soal": "1. Apa satuan dari molaritas?",
+            "opsi": ["mol", "mol/L", "gram", "L/mol"],
+            "jawaban": "mol/L",
+            "penjelasan": "Molaritas adalah konsentrasi mol per liter larutan (mol/L)."
+        },
+        {
+            "soal": "2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
+            "opsi": ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"],
+            "jawaban": "0,17 mol",
+            "penjelasan": "Mol = massa/Mr = 10 / 58,5 = 0,17 mol."
+        },
+        {
+            "soal": "3. Rumus pengenceran larutan adalah?",
+            "opsi": ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"],
+            "jawaban": "M1V1 = M2V2",
+            "penjelasan": "Rumus pengenceran: M1V1 = M2V2, dengan M = molaritas, V = volume."
+        },
+        {
+            "soal": "4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah?",
+            "opsi": ["3", "4", "7", "10"],
+            "jawaban": "3",
+            "penjelasan": "pH = -log[H⁺] = -log(10⁻³) = 3."
+        },
+        {
+            "soal": "5. Massa molar dari H₂O adalah?",
+            "opsi": ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"],
+            "jawaban": "18 g/mol",
+            "penjelasan": "H₂ = 2, O = 16 → 2 + 16 = 18 g/mol."
+        },
+        {
+            "soal": "6. Apa rumus mol dari massa dan Mr?",
+            "opsi": ["Mol = Mr × massa", "Mol = massa / Mr", "Mol = volume × Mr", "Mol = massa × volume"],
+            "jawaban": "Mol = massa / Mr",
+            "penjelasan": "Rumus dasar: mol = massa (g) ÷ Mr."
+        },
+        {
+            "soal": "7. Apa rumus konsentrasi % massa?",
+            "opsi": ["massa zat / volume", "massa zat / massa larutan × 100%", "mol / liter", "massa / mol"],
+            "jawaban": "massa zat / massa larutan × 100%",
+            "penjelasan": "Konsentrasi % massa = massa zat / massa larutan × 100%."
+        },
+        {
+            "soal": "8. Air termasuk pelarut apa dalam kimia?",
+            "opsi": ["Pelarut organik", "Pelarut netral", "Pelarut universal", "Pelarut asam"],
+            "jawaban": "Pelarut universal",
+            "penjelasan": "Air disebut pelarut universal karena dapat melarutkan banyak zat."
+        },
+        {
+            "soal": "9. Asam kuat akan terionisasi?",
+            "opsi": ["Sebagian", "Tidak sama sekali", "Sepenuhnya", "Sangat lambat"],
+            "jawaban": "Sepenuhnya",
+            "penjelasan": "Asam kuat → terionisasi sepenuhnya dalam larutan."
+        },
+        {
+            "soal": "10. NaOH termasuk senyawa?",
+            "opsi": ["Asam kuat", "Basa kuat", "Basa lemah", "Garam"],
+            "jawaban": "Basa kuat",
+            "penjelasan": "NaOH → basa kuat yang terionisasi sepenuhnya."
+        },
+    ]
+
+    # Ambil jawaban pengguna
+    jawaban_pengguna = []
+    for i, q in enumerate(pertanyaan):
+        jawaban = st.radio(q["soal"], q["opsi"], key=f"q{i}")
+        jawaban_pengguna.append(jawaban)
 
     if st.button("Submit Jawaban"):
         st.session_state["submitted"] = True
 
     if st.session_state["submitted"]:
         score = 0
+        total_poin = 0
         st.markdown("---")
         st.subheader("📋 Hasil Kuis:")
 
-        if q1 == "mol/L":
-            st.markdown("<div class='feedback benar'>✅ 1. Benar! Molaritas satuannya mol/L.</div>", unsafe_allow_html=True)
-            st.info("**Penjelasan:** Molaritas (M) adalah jumlah mol zat terlarut per liter larutan, jadi satuannya adalah mol/L.")
-            score += 1
-        else:
-            st.markdown("<div class='feedback salah'>❌ 1. Salah. Jawabannya adalah mol/L.</div>", unsafe_allow_html=True)
-
-        if q2 == "0,17 mol":
-            st.markdown("<div class='feedback benar'>✅ 2. Tepat! 10 / 58,5 = 0,17 mol.</div>", unsafe_allow_html=True)
-            st.info("**Penjelasan:** Mol = massa / Mr. Jadi, 10 g / 58,5 g/mol = 0,17 mol.")
-            score += 1
-        else:
-            st.markdown("<div class='feedback salah'>❌ 2. Salah. Jawabannya adalah 0,17 mol.</div>", unsafe_allow_html=True)
-
-        if q3 == "M1V1 = M2V2":
-            st.markdown("<div class='feedback benar'>✅ 3. Betul! Itu rumus pengenceran larutan.</div>", unsafe_allow_html=True)
-            st.info("**Penjelasan:** Rumus pengenceran larutan: M1V1 = M2V2, di mana M adalah molaritas dan V adalah volume.")
-            score += 1
-        else:
-            st.markdown("<div class='feedback salah'>❌ 3. Salah. Yang benar adalah M1V1 = M2V2.</div>", unsafe_allow_html=True)
-
-        if q4 == "3":
-            st.markdown("<div class='feedback benar'>✅ 4. Tepat! pH = -log(10⁻³) = 3.</div>", unsafe_allow_html=True)
-            st.info("**Penjelasan:** Rumus pH = -log[H⁺]. Jika [H⁺] = 10⁻³, maka pH = 3.")
-            score += 1
-        else:
-            st.markdown("<div class='feedback salah'>❌ 4. Salah. Jawabannya adalah 3.</div>", unsafe_allow_html=True)
-
-        if q5 == "18 g/mol":
-            st.markdown("<div class='feedback benar'>✅ 5. Benar! H₂ (2) + O (16) = 18 g/mol.</div>", unsafe_allow_html=True)
-            st.info("**Penjelasan:** Massa molar H₂O = (2 × 1) + 16 = 18 g/mol.")
-            score += 1
-        else:
-            st.markdown("<div class='feedback salah'>❌ 5. Salah. Jawabannya adalah 18 g/mol.</div>", unsafe_allow_html=True)
+        for i, q in enumerate(pertanyaan):
+            if jawaban_pengguna[i] == q["jawaban"]:
+                score += 1
+                total_poin += 10
+                st.markdown(f"<div class='feedback benar'>✅ {i+1}. Benar! {q['penjelasan']}</div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div class='feedback salah'>❌ {i+1}. Salah. {q['penjelasan']}</div>", unsafe_allow_html=True)
 
         st.markdown("---")
-        st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 5 soal</div>", unsafe_allow_html=True)
+        st.markdown(f"**Skor Benar:** {score} dari {len(pertanyaan)} soal")
+        st.markdown(f"**Total Nilai:** {total_poin} poin")
 
-        if score == 5:
+        if score == len(pertanyaan):
             st.balloons()
-            st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua.</div>", unsafe_allow_html=True)
-        elif score >= 3:
-            st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
+            st.success("🎉 Luar biasa! Kamu menjawab semuanya dengan benar!")
+        elif score >= 7:
+            st.info("👍 Bagus! Kamu sudah memahami sebagian besar konsep dasar.")
         else:
-            st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
+            st.warning("📚 Yuk belajar lagi. Semangat terus ya!")
 
-        if st.button("Ulangi Kuis"):
-            for k in list(st.session_state.keys()):
-                if k.startswith("q") or k == "submitted":
-                    del st.session_state[k]
+        if st.button("🔄 Ulangi Kuis"):
+            for key in list(st.session_state.keys()):
+                if key.startswith("q") or key == "submitted":
+                    del st.session_state[key]
             st.rerun()
+
