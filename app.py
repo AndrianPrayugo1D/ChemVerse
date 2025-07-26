@@ -5,7 +5,7 @@ import math
 st.markdown("""
     <style>
     .stApp {
-        background-image: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.80)),
+        background-image: linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)),
                           url("https://i.imgur.com/BSBUvyu.jpeg");
         background-size: cover;
         background-attachment: fixed;
