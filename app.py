@@ -146,19 +146,17 @@ elif menu == "👥 Tentang Kami":
     4. Nabil Syafiq Suhendar (2460446)  
     5. Sefina Zahra Pangestika (2460515)
     """)
+
 # ------------------ Tentang Aplikasi ------------------
 elif menu == "ℹ️ Tentang Aplikasi":
-    st.header("📘 Tentang Aplikasi ChemVerse")
-    st.markdown("*Pilih informasi yang ingin ditampilkan*")
-
-    # Tambahkan spasi agar dropdown tidak naik ke atas
-    st.markdown("<br><br>", unsafe_allow_html=True)
-
-    # Pilihan informasi
-    opsi = st.selectbox(
-        "📌 Pilih bagian:",
-        ["Deskripsi", "Latar Belakang", "Tujuan", "Fitur", "Manfaat"]
-    )
+    st.subheader("📘 Tentang Aplikasi - ChemVerse")
+    tab = st.selectbox("Pilih Penjelasan", [
+        "🧪 Deskripsi",
+        "🔍 Latar Belakang",
+        "🎯 Tujuan",
+        "⚙️ Fitur",
+        "🌟 Manfaat"
+    ])
 
     if tab == "🧪 Deskripsi":
         st.markdown("""
