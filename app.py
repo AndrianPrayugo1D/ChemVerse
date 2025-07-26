@@ -252,6 +252,21 @@ elif menu == "🧫 Hitung pH":
 
     jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
     konsentrasi = st.number_input("Konsentrasi ion (mol/L)", min_value=0.0, format="%.10f", key="ph_kons")
+
+    # 🔍 Penjelasan edukatif tambahan di bawah input
+    st.markdown("""
+    <small style='color: #cccccc;'>
+    💡 <b>Petunjuk:</b><br>
+    • Masukkan nilai konsentrasi ion H⁺ (untuk larutan asam) atau OH⁻ (untuk larutan basa) dalam satuan mol/L.<br>
+    • Nilai <b>harus lebih besar dari 0</b>, karena logaritma dari 0 tidak terdefinisi.<br>
+    • Contoh masukan yang benar: <code>0.01</code>, <code>1e-3</code> (setara dengan 0.001), atau <code>0.0000001</code><br>
+    • Nilai pH dihitung dari rumus:  
+    &emsp;- Untuk <b>asam</b>: <code>pH = -log[H⁺]</code><br>
+    &emsp;- Untuk <b>basa</b>: <code>pOH = -log[OH⁻]</code>, lalu <code>pH = 14 - pOH</code><br>
+    • Rentang pH yang valid biasanya antara <b>0 hingga 14</b> (pH &lt; 7 asam, pH = 7 netral, pH &gt; 7 basa)
+    </small>
+    """, unsafe_allow_html=True)
+
     col1, col2 = st.columns(2)
 
     if col1.button("Hitung"):
@@ -266,6 +281,8 @@ elif menu == "🧫 Hitung pH":
 
             if ph < 0:
                 st.markdown("<div class='custom-output'>❌ Hasil pH tidak valid (negatif).</div>", unsafe_allow_html=True)
+            elif ph > 14:
+                st.markdown(f"<div class='custom-output'>⚠️ Hasil pH = {ph:.2f}, melebihi batas skala pH normal.</div>", unsafe_allow_html=True)
             else:
                 st.markdown(f"<div class='custom-output'>pH = {ph:.2f}</div>", unsafe_allow_html=True)
 
