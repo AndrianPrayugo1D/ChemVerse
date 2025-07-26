@@ -273,7 +273,7 @@ elif menu == "🧫 Hitung pH":
 
     # 🔍 Penjelasan edukatif tambahan di bawah input
     st.markdown("""
-    <small style='color: #cccccc;'>
+    <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
     • Masukkan nilai konsentrasi ion H⁺ (untuk larutan asam) atau OH⁻ (untuk larutan basa) dalam satuan mol/L.<br>
     • Nilai <b>harus lebih besar dari 0</b>, karena logaritma dari 0 tidak terdefinisi.<br>
@@ -317,7 +317,7 @@ elif menu == "💧 Pengenceran Larutan":
 
     # 🔍 Petunjuk Edukatif
     st.markdown("""
-    <small style='color: #cccccc;'>
+    <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
     • Masukkan konsentrasi awal (M₁), volume awal (V₁), dan konsentrasi akhir (M₂).<br>
     • Satuan yang digunakan harus konsisten (contoh: mL untuk volume, Molar untuk konsentrasi).<br>
@@ -360,7 +360,7 @@ elif menu == "📊 Persentase Konsentrasi":
 
     # 🔍 Petunjuk Edukatif
     st.markdown("""
-    <small style='color: #cccccc;'>
+    <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
     • Masukkan <b>massa zat terlarut</b> dan <b>massa total larutan</b> (zat + pelarut) dalam gram.<br>
     • Pastikan massa zat ≤ massa larutan.<br>
