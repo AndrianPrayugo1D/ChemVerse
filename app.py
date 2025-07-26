@@ -226,20 +226,38 @@ elif menu == "ℹ️ Tentang Aplikasi":
 # ------------------ Hitung Mol ------------------
 elif menu == "🧪 Hitung Mol":
     st.header("🔹 Hitung Mol")
-    st.markdown("*Rumus:* mol = massa / Mr")
+    st.markdown("*Masukkan massa zat (gram) dan Mr (massa molar relatif)*")
 
-    massa = st.number_input("Masukkan massa zat (gram)", min_value=0.0, step=0.1, key="mol_massa")
-    mr = st.number_input("Masukkan massa molar (Mr)", min_value=0.01, step=0.1, key="mol_mr")
+    # 🔍 Petunjuk Edukatif
+    st.markdown("""
+    <small style='color: #cccccc;'>
+    💡 <b>Petunjuk:</b><br>
+    • Masukkan <b>massa zat (dalam gram)</b> dan <b>Mr</b> (massa molar relatif) dari zat tersebut.<br>
+    • Rumus yang digunakan: <code>mol = massa (g) / Mr</code><br>
+    • Nilai mol menunjukkan jumlah partikel zat dalam satuan mol (1 mol = 6.022×10²³ partikel).
+    </small>
+    """, unsafe_allow_html=True)
+
+    massa = st.number_input("Massa (gram)", min_value=0.0, format="%.4f", key="mol_massa")
+    mr = st.number_input("Mr (Massa Molar Relatif)", min_value=0.0, format="%.4f", key="mol_mr")
+
     col1, col2 = st.columns(2)
 
-    if col1.button("Hitung"):
-        if massa == 0 or mr == 0:
-            st.warning("⚠️ Mohon masukkan nilai massa dan Mr yang valid.")
+    if col1.button("Hitung", key="mol_hitung"):
+        if mr <= 0:
+            st.warning("⚠️ Masukkan nilai Mr yang lebih besar dari 0.")
         else:
             mol = massa / mr
             st.markdown(f"<div class='custom-output'>Mol = {mol:.4f} mol</div>", unsafe_allow_html=True)
+            st.markdown("""
+            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            🔎 <b>Penjelasan:</b><br>
+            • Menggunakan rumus: <code>mol = massa / Mr</code><br>
+            • mol = {:.4f} / {:.4f} = {:.4f} mol
+            </div>
+            """.format(massa, mr, mol), unsafe_allow_html=True)
 
-    if col2.button("Reset"):
+    if col2.button("Reset", key="mol_reset"):
         for key in ["mol_massa", "mol_mr"]:
             if key in st.session_state:
                 del st.session_state[key]
