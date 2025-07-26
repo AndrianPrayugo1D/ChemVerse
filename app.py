@@ -146,7 +146,6 @@ elif menu == "👥 Tentang Kami":
     4. Nabil Syafiq Suhendar (2460446)  
     5. Sefina Zahra Pangestika (2460515)
     """)
-
 # ------------------ Tentang Aplikasi ------------------
 elif menu == "ℹ️ Tentang Aplikasi":
     st.header("📘 Tentang Aplikasi ChemVerse")
@@ -155,10 +154,12 @@ elif menu == "ℹ️ Tentang Aplikasi":
     # Tambahkan spasi agar dropdown tidak naik ke atas
     st.markdown("<br><br>", unsafe_allow_html=True)
 
+    # Pilihan informasi
     opsi = st.selectbox(
         "📌 Pilih bagian:",
         ["Deskripsi", "Latar Belakang", "Tujuan", "Fitur", "Manfaat"]
     )
+
     if tab == "🧪 Deskripsi":
         st.markdown("""
         ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.
