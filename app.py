@@ -477,30 +477,35 @@ elif menu == "🧠 Kuis Kimia":
 
         if q1 == "mol/L":
             st.markdown("<div class='feedback benar'>✅ 1. Benar! Molaritas satuannya mol/L.</div>", unsafe_allow_html=True)
+            st.info("**Penjelasan:** Molaritas (M) adalah jumlah mol zat terlarut per liter larutan, jadi satuannya adalah mol/L.")
             score += 1
         else:
             st.markdown("<div class='feedback salah'>❌ 1. Salah. Jawabannya adalah mol/L.</div>", unsafe_allow_html=True)
 
         if q2 == "0,17 mol":
             st.markdown("<div class='feedback benar'>✅ 2. Tepat! 10 / 58,5 = 0,17 mol.</div>", unsafe_allow_html=True)
+            st.info("**Penjelasan:** Mol = massa / Mr. Jadi, 10 g / 58,5 g/mol = 0,17 mol.")
             score += 1
         else:
             st.markdown("<div class='feedback salah'>❌ 2. Salah. Jawabannya adalah 0,17 mol.</div>", unsafe_allow_html=True)
 
         if q3 == "M1V1 = M2V2":
             st.markdown("<div class='feedback benar'>✅ 3. Betul! Itu rumus pengenceran larutan.</div>", unsafe_allow_html=True)
+            st.info("**Penjelasan:** Rumus pengenceran larutan: M1V1 = M2V2, di mana M adalah molaritas dan V adalah volume.")
             score += 1
         else:
             st.markdown("<div class='feedback salah'>❌ 3. Salah. Yang benar adalah M1V1 = M2V2.</div>", unsafe_allow_html=True)
 
         if q4 == "3":
             st.markdown("<div class='feedback benar'>✅ 4. Tepat! pH = -log(10⁻³) = 3.</div>", unsafe_allow_html=True)
+            st.info("**Penjelasan:** Rumus pH = -log[H⁺]. Jika [H⁺] = 10⁻³, maka pH = 3.")
             score += 1
         else:
             st.markdown("<div class='feedback salah'>❌ 4. Salah. Jawabannya adalah 3.</div>", unsafe_allow_html=True)
 
         if q5 == "18 g/mol":
             st.markdown("<div class='feedback benar'>✅ 5. Benar! H₂ (2) + O (16) = 18 g/mol.</div>", unsafe_allow_html=True)
+            st.info("**Penjelasan:** Massa molar H₂O = (2 × 1) + 16 = 18 g/mol.")
             score += 1
         else:
             st.markdown("<div class='feedback salah'>❌ 5. Salah. Jawabannya adalah 18 g/mol.</div>", unsafe_allow_html=True)
@@ -521,11 +526,3 @@ elif menu == "🧠 Kuis Kimia":
                 if k.startswith("q") or k == "submitted":
                     del st.session_state[k]
             st.rerun()
-
-# ------------------ Footer ------------------
-# ------------------ Footer ------------------
-st.markdown("""
-<div style='text-align: center; color: white; font-size: 0.9rem; margin-top: 50px;'>
-    © 2025 ChemVerse | Dibuat oleh Kelompok 3
-</div>
-""", unsafe_allow_html=True)
