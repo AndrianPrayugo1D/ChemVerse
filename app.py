@@ -310,24 +310,44 @@ elif menu == "🧫 Hitung pH":
                 del st.session_state[key]
         st.rerun()
 
-# ------------------ Pengenceran ------------------
+# ------------------ Pengenceran Larutan ------------------
 elif menu == "💧 Pengenceran Larutan":
     st.header("🔹 Pengenceran Larutan")
-    st.markdown("*Rumus:* M₁V₁ = M₂V₂")
+    st.markdown("*Hitung volume akhir berdasarkan rumus pengenceran: M₁ × V₁ = M₂ × V₂*")
 
-    m1 = st.number_input("Konsentrasi awal (M₁)", min_value=0.0, key="peng_m1")
-    v1 = st.number_input("Volume awal (V₁) [mL]", min_value=0.0, key="peng_v1")
-    m2 = st.number_input("Konsentrasi akhir (M₂)", min_value=0.01, key="peng_m2")
+    # 🔍 Petunjuk Edukatif
+    st.markdown("""
+    <small style='color: #cccccc;'>
+    💡 <b>Petunjuk:</b><br>
+    • Masukkan konsentrasi awal (M₁), volume awal (V₁), dan konsentrasi akhir (M₂).<br>
+    • Satuan yang digunakan harus konsisten (contoh: mL untuk volume, Molar untuk konsentrasi).<br>
+    • Rumus yang digunakan: <code>M₁ × V₁ = M₂ × V₂</code><br>
+    • Aplikasi akan menghitung volume akhir (V₂) yang diperlukan agar larutan menjadi lebih encer.
+    </small>
+    """, unsafe_allow_html=True)
+
+    m1 = st.number_input("Konsentrasi awal (M₁)", min_value=0.0, format="%.4f", key="peng_m1")
+    v1 = st.number_input("Volume awal (V₁) dalam mL", min_value=0.0, format="%.4f", key="peng_v1")
+    m2 = st.number_input("Konsentrasi akhir (M₂)", min_value=0.0, format="%.4f", key="peng_m2")
+
     col1, col2 = st.columns(2)
 
-    if col1.button("Hitung"):
-        if m1 == 0 or v1 == 0 or m2 == 0:
-            st.warning("⚠️ Semua nilai harus diisi dengan benar.")
+    if col1.button("Hitung", key="pengenceran_hitung"):
+        if m2 <= 0:
+            st.warning("⚠️ Masukkan nilai M₂ yang lebih besar dari 0.")
         else:
             v2 = (m1 * v1) / m2
             st.markdown(f"<div class='custom-output'>Volume akhir (V₂) = {v2:.2f} mL</div>", unsafe_allow_html=True)
+            st.markdown("""
+            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            🔎 <b>Penjelasan:</b><br>
+            • Menggunakan rumus: <code>M₁ × V₁ = M₂ × V₂</code><br>
+            • ({:.4f}) × ({:.2f}) = ({:.4f}) × V₂<br>
+            • V₂ = {:.4f} mL
+            </div>
+            """.format(m1, v1, m2, v2), unsafe_allow_html=True)
 
-    if col2.button("Reset"):
+    if col2.button("Reset", key="pengenceran_reset"):
         for key in ["peng_m1", "peng_v1", "peng_m2"]:
             if key in st.session_state:
                 del st.session_state[key]
