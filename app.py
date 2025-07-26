@@ -5,7 +5,6 @@ import math
 st.markdown("""
     <style>
     .stApp {
-        padding-top: 4.5rem;  /* ✅ Tambahan penting agar isi tidak tertutup toolbar putih */
         background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
                           url("https://i.imgur.com/BSBUvyu.jpeg");
         background-size: cover;
@@ -108,7 +107,6 @@ st.markdown("""
         border-radius: 8px;
     }
     </style>
-
     <div style="position: fixed; top: 70px; left: 10px; color: white; background: rgba(0,0,0,0.6); padding: 6px 10px; border-radius: 8px; z-index:9999; font-size: 14px;">
         Klik tombol >> untuk buka menu
     </div>
