@@ -266,12 +266,8 @@ elif menu == "🧪 Hitung Mol":
 # ------------------ Hitung pH ------------------
 elif menu == "🧫 Hitung pH":
     st.header("🔹 Hitung pH")
-    st.markdown("*Pilih jenis larutan dan masukkan konsentrasi ion (mol/L)*")
 
-    jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
-    konsentrasi = st.number_input("Konsentrasi ion (mol/L)", min_value=0.0, format="%.10f", key="ph_kons")
-
-    # 🔍 Penjelasan edukatif tambahan di bawah input
+    # 🔍 Petunjuk di atas input
     st.markdown("""
     <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
@@ -282,8 +278,13 @@ elif menu == "🧫 Hitung pH":
     &emsp;- Untuk <b>asam</b>: <code>pH = -log[H⁺]</code><br>
     &emsp;- Untuk <b>basa</b>: <code>pOH = -log[OH⁻]</code>, lalu <code>pH = 14 - pOH</code><br>
     • Rentang pH yang valid biasanya antara <b>0 hingga 14</b> (pH &lt; 7 asam, pH = 7 netral, pH &gt; 7 basa)
-    </small>
+    </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("*Pilih jenis larutan dan masukkan konsentrasi ion (mol/L)*")
+
+    jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
+    konsentrasi = st.number_input("Konsentrasi ion (mol/L)", min_value=0.0, format="%.10f", key="ph_kons")
 
     col1, col2 = st.columns(2)
 
