@@ -420,20 +420,32 @@ elif menu == "📊 Persentase Konsentrasi":
     st.markdown("""
     <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
-    • Masukkan massa zat terlarut dan massa total larutan (zat + pelarut) dalam gram.<br>
-    • Massa zat tidak boleh melebihi massa larutan.<br>
-    • Rumus yang digunakan: <code>(massa zat / massa larutan) × 100%</code><br>
-    • Hasil ditampilkan dalam persen (% b/b).
+    • Masukkan <b>massa zat terlarut</b> dan <b>massa total larutan</b> (zat + pelarut) dalam gram.<br>
+    • Pastikan massa zat ≤ massa larutan.<br>
+    • Rumus: <code>(massa zat / massa larutan) × 100%</code><br>
+    • Hasil akan menunjukkan konsentrasi dalam persen (% b/b).
     </div>
     """, unsafe_allow_html=True)
 
-    # Input
     massa_zat = st.number_input("Massa zat terlarut (gram)", min_value=0.0, format="%.4f", key="persen_zat")
     massa_larutan = st.number_input("Massa total larutan (gram)", min_value=0.0, format="%.4f", key="persen_larutan")
 
     col1, col2 = st.columns(2)
 
-    # Tombol Hitung
+    # Styling hasil kotak (ChemVerse style)
+    st.markdown("""
+        <style>
+        .custom-output {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+            color: white;
+            font-size: 18px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     if col1.button("Hitung", key="persen_hitung"):
         if massa_larutan <= 0:
             st.warning("⚠️ Masukkan massa larutan yang lebih besar dari 0.")
@@ -445,12 +457,11 @@ elif menu == "📊 Persentase Konsentrasi":
             st.markdown("""
             <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
             🔎 <b>Penjelasan:</b><br>
-            • Rumus: <code>(massa zat / massa larutan) × 100%</code><br>
-            • Substitusi: ({:.4f} / {:.4f}) × 100% = {:.2f}%
+            • Menggunakan rumus: <code>(massa zat / massa larutan) × 100%</code><br>
+            • ({:.4f} / {:.4f}) × 100% = {:.2f}%
             </div>
             """.format(massa_zat, massa_larutan, persen), unsafe_allow_html=True)
 
-    # Tombol Reset
     if col2.button("Reset", key="persen_reset"):
         for key in ["persen_zat", "persen_larutan"]:
             if key in st.session_state:
