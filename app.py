@@ -4,16 +4,16 @@ import math
 # ------------------ Styling CSS ------------------
 st.markdown("""
     <style>
-   .stApp {
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-                      url("https://i.imgur.com/BSBUvyu.jpeg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center center;
-    min-height: 100vh;
-    color: white;
-}
+    .stApp {
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                          url("https://i.imgur.com/BSBUvyu.jpeg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 100vh;
+        color: white;
+    }
 
     h1, h2, h3, h4 {
         color: #00ccff;
