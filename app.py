@@ -281,8 +281,6 @@ elif menu == "🧫 Hitung pH":
     </div>
     """, unsafe_allow_html=True)
 
-
-    
     st.markdown("*Pilih jenis larutan dan masukkan konsentrasi ion (mol/L)*")
 
     jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
