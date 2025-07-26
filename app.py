@@ -12,61 +12,102 @@ st.markdown("""
         background-position: center;
         color: white;
     }
-    header[data-testid="stHeader"] { background: transparent !important; }
-    .block-container { padding-top: 1rem !important; }
-    h1, h2, h3, h4, h5 { color: white !important; }
-    label, .stMarkdown { color: white !important; }
-    input[type="number"], input[type="text"] {
-        color: black !important;
-        background-color: rgba(255,255,255,0.9) !important;
-        border-radius: 5px !important;
+
+    h1, h2, h3, h4 {
+        color: #00ccff;
     }
+
+    html, body, p, label, .stMarkdown, .stRadio, .stCheckbox, .stSelectbox, 
+    .stTextInput, .stNumberInput, .stDateInput, .stTextArea, .stFileUploader, 
+    .stSlider, .stMultiSelect {
+        color: white !important;
+    }
+
     .custom-output {
         background-color: rgba(255, 255, 255, 0.9);
         color: black;
         font-weight: bold;
-        padding: 10px;
+        padding: 10px 20px;
+        border: 3px solid #00ccff;
         border-radius: 10px;
-        border: 2px solid #00ccff;
         text-align: center;
-        margin-top: 10px;
-    }
-    [data-testid="stSidebar"] {
-        background-image: linear-gradient(135deg, #cceeff 0%, #99ccff 100%);
-        color: black;
-        padding-top: 0 !important;
-        margin-top: 0 !important;
-    }
-    [data-testid="stSidebar"] .block-container {
-        padding-top: 0px !important;
-        margin-top: 0px !important;
-    }
-    [data-testid="stSidebar"] .stMarkdown {
-        color: black !important;
-        font-weight: bold;
+        margin-top: 20px;
         font-size: 1.1rem;
-        margin-bottom: 0px !important;
-        padding-bottom: 0px !important;
+        box-shadow: 0 0 10px rgba(0, 204, 255, 0.4);
     }
-    .stButton button {
+
+    .stButton>button {
         background-color: #00ccff;
-        color: black;
-        border-radius: 8px;
+        color: white;
+        border-radius: 12px;
         padding: 0.5em 1em;
         font-weight: bold;
+        border: none;
+        transition: 0.3s ease;
+        box-shadow: 0px 4px 10px rgba(0, 204, 255, 0.4);
     }
-    .stButton button:hover {
-        background-color: #0099cc;
-        color: white;
-    }
-   div[role="radiogroup"] > label, 
-div[role="radiogroup"] span, 
-div[role="radiogroup"] div {
-    color: white !important;
-    font-weight: bold !important;
-}
 
+    .stButton>button:hover {
+        background-color: #0099cc;
+        transform: scale(1.05);
+        box-shadow: 0px 6px 15px rgba(0, 204, 255, 0.6);
+    }
+
+    .stTextInput>div>div>input {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+        border-radius: 8px;
+        padding: 0.5em;
+        border: 1px solid #00ccff;
+    }
+
+    .stTextInput>div>div>input:focus {
+        border: 2px solid #00ccff;
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 204, 255, 0.5);
+    }
+
+    button[aria-label="Open sidebar"],
+    button[aria-label="Close sidebar"] {
+        background-color: #00ccff !important;
+        color: white !important;
+        border: 2px solid white !important;
+        border-radius: 12px !important;
+        padding: 6px 10px !important;
+        font-weight: bold !important;
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.8) !important;
+        z-index: 9999 !important;
+        transition: 0.3s ease-in-out;
+    }
+
+    button[aria-label="Open sidebar"]:hover,
+    button[aria-label="Close sidebar"]:hover {
+        background-color: white !important;
+        color: #00ccff !important;
+        transform: scale(1.1);
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.9) !important;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #b3d9ff !important;
+        color: black !important;
+        font-weight: bold;
+        border-right: 2px solid #00ccff;
+    }
+
+    section[data-testid="stSidebar"] .css-1v0mbdj,
+    section[data-testid="stSidebar"] .css-1d391kg {
+        color: black !important;
+    }
+
+    section[data-testid="stSidebar"] .css-1v0mbdj:hover {
+        background-color: #99ccff !important;
+        border-radius: 8px;
+    }
     </style>
+    <div style="position: fixed; top: 70px; left: 10px; color: white; background: rgba(0,0,0,0.6); padding: 6px 10px; border-radius: 8px; z-index:9999; font-size: 14px;">
+        Klik tombol >> untuk buka menu
+    </div>
 """, unsafe_allow_html=True)
 
 # ------------------ Judul ------------------
@@ -207,21 +248,31 @@ elif menu == "🧪 Hitung Mol":
 # ------------------ Hitung pH ------------------
 elif menu == "🧫 Hitung pH":
     st.header("🔹 Hitung pH")
-    st.markdown("*Rumus:* pH = -log[H⁺]")
+    st.markdown("*Pilih jenis larutan dan masukkan konsentrasi ion (mol/L)*")
 
-    h_conc = st.number_input("Konsentrasi ion H⁺ (mol/L)", min_value=0.0, format="%.10f", key="ph_hconc")
+    jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
+    konsentrasi = st.number_input("Konsentrasi ion (mol/L)", min_value=0.0, format="%.10f", key="ph_kons")
     col1, col2 = st.columns(2)
 
     if col1.button("Hitung"):
-        if h_conc <= 0:
-            st.warning("⚠️ Masukkan konsentrasi ion H⁺ yang lebih besar dari 0.")
+        if konsentrasi <= 0:
+            st.warning("⚠️ Masukkan konsentrasi ion yang lebih besar dari 0.")
         else:
-            ph = -math.log10(h_conc)
-            st.markdown(f"<div class='custom-output'>pH = {ph:.2f}</div>", unsafe_allow_html=True)
+            if jenis == "Asam":
+                ph = -math.log10(konsentrasi)
+            else:  # Basa
+                poh = -math.log10(konsentrasi)
+                ph = 14 - poh
+
+            if ph < 0:
+                st.markdown("<div class='custom-output'>❌ Hasil pH tidak valid (negatif).</div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div class='custom-output'>pH = {ph:.2f}</div>", unsafe_allow_html=True)
 
     if col2.button("Reset"):
-        if "ph_hconc" in st.session_state:
-            del st.session_state["ph_hconc"]
+        for key in ["ph_jenis", "ph_kons"]:
+            if key in st.session_state:
+                del st.session_state[key]
         st.rerun()
 
 # ------------------ Pengenceran ------------------
