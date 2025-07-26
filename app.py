@@ -251,7 +251,7 @@ elif menu == "🧪 Hitung Mol":
             mol = massa / mr
             st.markdown(f"<div class='custom-output'>Mol = {mol:.4f} mol</div>", unsafe_allow_html=True)
             st.markdown("""
-            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
             🔎 <b>Penjelasan:</b><br>
             • Menggunakan rumus: <code>mol = massa / Mr</code><br>
             • mol = {:.4f} / {:.4f} = {:.4f} mol
