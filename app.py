@@ -527,3 +527,11 @@ elif menu == "🧠 Kuis Kimia":
                 if k.startswith("q") or k == "submitted":
                     del st.session_state[k]
             st.rerun()
+
+# ------------------ Footer ------------------
+# ------------------ Footer ------------------
+st.markdown("""
+<div style='text-align: center; color: white; font-size: 0.9rem; margin-top: 50px;'>
+    © 2025 ChemVerse | Dibuat oleh Kelompok 3
+</div>
+""", unsafe_allow_html=True)
