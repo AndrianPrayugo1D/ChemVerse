@@ -230,7 +230,7 @@ elif menu == "🧪 Hitung Mol":
 
     # 🔍 Petunjuk Edukatif
     st.markdown("""
-    <small style='color: #cccccc;'>
+    <div style='color: #cccccc; font-size: 16px;'>
     💡 <b>Petunjuk:</b><br>
     • Masukkan <b>massa zat (dalam gram)</b> dan <b>Mr</b> (massa molar relatif) dari zat tersebut.<br>
     • Rumus yang digunakan: <code>mol = massa (g) / Mr</code><br>
