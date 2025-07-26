@@ -150,6 +150,7 @@ elif menu == "👥 Tentang Kami":
 # ------------------ Tentang Aplikasi ------------------
 elif menu == "ℹ️ Tentang Aplikasi":
     st.subheader("📘 Tentang Aplikasi - ChemVerse")
+
     tab = st.selectbox("Pilih Penjelasan", [
         "🧪 Deskripsi",
         "🔍 Latar Belakang",
@@ -222,6 +223,8 @@ elif menu == "ℹ️ Tentang Aplikasi":
         2. Menurunkan tingkat kesalahan hitung manual, sehingga hasil perhitungan yang didapat akurat.  
         3. Menghemat waktu dalam analisis kimia.
         """)
+    # Tambahkan ruang agar selectbox dropdown muncul ke bawah
+    st.markdown("<div style='margin-bottom: 300px;'></div>", unsafe_allow_html=True)
 
 # ------------------ Hitung Mol ------------------
 elif menu == "🧪 Hitung Mol":
