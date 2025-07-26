@@ -252,7 +252,7 @@ elif menu == "🧪 Hitung Mol":
             mol = massa / mr
             st.markdown(f"<div class='custom-output'>Mol = {mol:.4f} mol</div>", unsafe_allow_html=True)
             st.markdown("""
-            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
             🔎 <b>Penjelasan:</b><br>
             • Menggunakan rumus: <code>mol = massa / Mr</code><br>
             • mol = {:.4f} / {:.4f} = {:.4f} mol
@@ -342,7 +342,7 @@ elif menu == "💧 Pengenceran Larutan":
             v2 = (m1 * v1) / m2
             st.markdown(f"<div class='custom-output'>Volume akhir (V₂) = {v2:.2f} mL</div>", unsafe_allow_html=True)
             st.markdown("""
-            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
             🔎 <b>Penjelasan:</b><br>
             • Menggunakan rumus: <code>M₁ × V₁ = M₂ × V₂</code><br>
             • ({:.4f}) × ({:.2f}) = ({:.4f}) × V₂<br>
@@ -386,7 +386,7 @@ elif menu == "📊 Persentase Konsentrasi":
             persen = (massa_zat / massa_larutan) * 100
             st.markdown(f"<div class='custom-output'>Konsentrasi = {persen:.2f}%</div>", unsafe_allow_html=True)
             st.markdown("""
-            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
             🔎 <b>Penjelasan:</b><br>
             • Menggunakan rumus: <code>(massa zat / massa larutan) × 100%</code><br>
             • ({:.4f} / {:.4f}) × 100% = {:.2f}%
