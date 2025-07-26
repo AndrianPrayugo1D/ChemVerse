@@ -237,7 +237,7 @@ elif menu == "🧪 Hitung Mol":
     • Masukkan <b>massa zat (dalam gram)</b> dan <b>Mr</b> (massa molar relatif) dari zat tersebut.<br>
     • Rumus yang digunakan: <code>mol = massa (g) / Mr</code><br>
     • Nilai mol menunjukkan jumlah partikel zat dalam satuan mol (1 mol = 6.022×10²³ partikel).
-    </small>
+    </div>
     """, unsafe_allow_html=True)
 
     massa = st.number_input("Massa (gram)", min_value=0.0, format="%.4f", key="mol_massa")
@@ -250,14 +250,13 @@ elif menu == "🧪 Hitung Mol":
             st.warning("⚠️ Masukkan nilai Mr yang lebih besar dari 0.")
         else:
             mol = massa / mr
-            st.markdown(f"<div class='custom-output'>Mol = {mol:.4f} mol</div>", unsafe_allow_html=True)
-            st.markdown("""
-            <div style='color: #cccccc; font-size: 16px; margin-top: 10px;'>
-            🔎 <b>Penjelasan:</b><br>
-            • Menggunakan rumus: <code>mol = massa / Mr</code><br>
-            • mol = {:.4f} / {:.4f} = {:.4f} mol
-            </div>
-            """.format(massa, mr, mol), unsafe_allow_html=True)
+            st.success(f"Mol = {mol:.4f} mol")
+
+            st.info(f"""
+🔎 **Penjelasan:**
+- Menggunakan rumus: `mol = massa / Mr`
+- mol = {massa:.4f} / {mr:.4f} = **{mol:.4f} mol**
+""")
 
     if col2.button("Reset", key="mol_reset"):
         for key in ["mol_massa", "mol_mr"]:
