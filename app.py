@@ -224,7 +224,7 @@ elif menu == "ℹ️ Tentang Aplikasi":
         3. Menghemat waktu dalam analisis kimia.
         """)
     # Tambahkan ruang agar selectbox dropdown muncul ke bawah
-    st.markdown("<div style='margin-bottom: 200px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom: 100px;'></div>", unsafe_allow_html=True)
 
 # ------------------ Hitung Mol ------------------
 elif menu == "🧪 Hitung Mol":
