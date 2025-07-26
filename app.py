@@ -268,16 +268,16 @@ elif menu == "🧪 Hitung Mol":
 elif menu == "🧫 Hitung pH":
     st.header("🔹 Hitung pH")
 
-    # ------------------ Petunjuk ------------------
+    # 🔍 Petunjuk di atas input
     st.markdown("""
     <div style='color: #cccccc; font-size: 16px;'>
-    💡 <b>Petunjuk:</b><br><br>
+    💡 <b>Petunjuk:</b><br>
     • Masukkan nilai konsentrasi ion H⁺ (untuk larutan <b>asam</b>) atau OH⁻ (untuk larutan <b>basa</b>) dalam satuan mol/L.<br>
     • Nilai <b>harus lebih besar dari 0</b>, karena logaritma dari 0 tidak terdefinisi.<br>
-    • Contoh input yang benar: <code>0.01</code>, <code>1e-3</code> (sama dengan 0.001), atau <code>0.0000001</code><br><br>
+    • Contoh masukan yang benar: <code>0.01</code>, <code>1e-3</code> (sama dengan 0.001), atau <code>0.0000001</code><br><br>
     • Rumus perhitungan:<br>
-    &emsp;- Untuk <b>larutan asam</b>: <code>pH = -log[H⁺]</code><br>
-    &emsp;- Untuk <b>larutan basa</b>: <code>pOH = -log[OH⁻]</code>, kemudian <code>pH = 14 - pOH</code><br><br>
+    &emsp;- Untuk <b>asam</b>: <code>pH = -log[H⁺]</code><br>
+    &emsp;- Untuk <b>basa</b>: <code>pOH = -log[OH⁻]</code>, lalu <code>pH = 14 - pOH</code><br><br>
     • Skala pH:<br>
     &emsp;- pH &lt; 7 → Asam<br>
     &emsp;- pH = 7 → Netral<br>
@@ -287,34 +287,32 @@ elif menu == "🧫 Hitung pH":
 
     st.markdown("*Pilih jenis larutan dan masukkan konsentrasi ion (mol/L)*")
 
-    # ------------------ Input ------------------
     jenis = st.radio("Jenis Larutan", ["Asam", "Basa"], key="ph_jenis")
     konsentrasi = st.number_input("Konsentrasi ion (mol/L)", min_value=0.0, format="%.10f", key="ph_kons")
 
     col1, col2 = st.columns(2)
 
-    # ------------------ Styling Hasil ------------------
+    # Gunakan styling hasil (kotak custom-output sesuai tampilan ChemVerse)
     st.markdown("""
         <style>
         .custom-output {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 10px;
             border-radius: 10px;
+            margin-top: 15px;
+            color: white;
             font-size: 18px;
-            margin-top: 10px;
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # ------------------ Tombol Hitung ------------------
     if col1.button("Hitung"):
         if konsentrasi <= 0:
             st.warning("⚠️ Masukkan konsentrasi ion yang lebih besar dari 0.")
         else:
             if jenis == "Asam":
                 ph = -math.log10(konsentrasi)
-            else:
+            else:  # Basa
                 poh = -math.log10(konsentrasi)
                 ph = 14 - poh
 
@@ -325,15 +323,14 @@ elif menu == "🧫 Hitung pH":
             else:
                 st.markdown(f"<div class='custom-output'>🔎 pH = {ph:.2f}</div>", unsafe_allow_html=True)
 
-                # ➕ Penjelasan Sifat Larutan
+                # ➕ Penjelasan sifat larutan berdasarkan pH
                 if ph < 7:
-                    st.markdown("<span style='color:#ffaaaa'>➡️ Larutan bersifat <b>asam</b>.</span>", unsafe_allow_html=True)
+                    st.markdown("<div class='custom-output'>➡️ Larutan bersifat <b>asam</b>.</div>", unsafe_allow_html=True)
                 elif ph > 7:
-                    st.markdown("<span style='color:#aaffaa'>➡️ Larutan bersifat <b>basa</b>.</span>", unsafe_allow_html=True)
+                    st.markdown("<div class='custom-output'>➡️ Larutan bersifat <b>basa</b>.</div>", unsafe_allow_html=True)
                 else:
-                    st.markdown("<span style='color:#aaaaff'>➡️ Larutan bersifat <b>netral</b>.</span>", unsafe_allow_html=True)
+                    st.markdown("<div class='custom-output'>➡️ Larutan bersifat <b>netral</b>.</div>", unsafe_allow_html=True)
 
-    # ------------------ Tombol Reset ------------------
     if col2.button("Reset"):
         for key in ["ph_jenis", "ph_kons"]:
             if key in st.session_state:
