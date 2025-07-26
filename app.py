@@ -149,15 +149,16 @@ elif menu == "👥 Tentang Kami":
 
 # ------------------ Tentang Aplikasi ------------------
 elif menu == "ℹ️ Tentang Aplikasi":
-    st.subheader("📘 Tentang Aplikasi - ChemVerse")
-    tab = st.selectbox("Pilih Penjelasan", [
-        "🧪 Deskripsi",
-        "🔍 Latar Belakang",
-        "🎯 Tujuan",
-        "⚙️ Fitur",
-        "🌟 Manfaat"
-    ])
+    st.header("📘 Tentang Aplikasi ChemVerse")
+    st.markdown("*Pilih informasi yang ingin ditampilkan*")
 
+    # Tambahkan spasi agar dropdown tidak naik ke atas
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+    opsi = st.selectbox(
+        "📌 Pilih bagian:",
+        ["Deskripsi", "Latar Belakang", "Tujuan", "Fitur", "Manfaat"]
+    )
     if tab == "🧪 Deskripsi":
         st.markdown("""
         ChemVerse adalah aplikasi kalkulator kimia digital yang interaktif, inovatif, dan cerdas. Dirancang untuk mempermudah perhitungan kimia sekaligus menjadi ruang eksplorasi konsep kimia dalam satu ekosistem terintegrasi.
