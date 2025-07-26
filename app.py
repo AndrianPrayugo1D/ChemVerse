@@ -364,15 +364,31 @@ elif menu == "💧 Pengenceran Larutan":
     • Satuan yang digunakan harus konsisten (contoh: mL untuk volume, Molar untuk konsentrasi).<br>
     • Rumus yang digunakan: <code>M₁ × V₁ = M₂ × V₂</code><br>
     • Aplikasi akan menghitung volume akhir (V₂) yang diperlukan agar larutan menjadi lebih encer.
-    </small>
+    </div>
     """, unsafe_allow_html=True)
 
+    # Input
     m1 = st.number_input("Konsentrasi awal (M₁)", min_value=0.0, format="%.4f", key="peng_m1")
     v1 = st.number_input("Volume awal (V₁) dalam mL", min_value=0.0, format="%.4f", key="peng_v1")
     m2 = st.number_input("Konsentrasi akhir (M₂)", min_value=0.0, format="%.4f", key="peng_m2")
 
     col1, col2 = st.columns(2)
 
+    # Styling hasil kotak (ChemVerse style)
+    st.markdown("""
+        <style>
+        .custom-output {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+            color: white;
+            font-size: 18px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Tombol Hitung
     if col1.button("Hitung", key="pengenceran_hitung"):
         if m2 <= 0:
             st.warning("⚠️ Masukkan nilai M₂ yang lebih besar dari 0.")
@@ -388,6 +404,7 @@ elif menu == "💧 Pengenceran Larutan":
             </div>
             """.format(m1, v1, m2, v2), unsafe_allow_html=True)
 
+    # Tombol Reset
     if col2.button("Reset", key="pengenceran_reset"):
         for key in ["peng_m1", "peng_v1", "peng_m2"]:
             if key in st.session_state:
