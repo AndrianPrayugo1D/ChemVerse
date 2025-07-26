@@ -355,24 +355,43 @@ elif menu == "💧 Pengenceran Larutan":
 
 # ------------------ Persentase Konsentrasi ------------------
 elif menu == "📊 Persentase Konsentrasi":
-    st.header("🔹 Persentase Konsentrasi")
-    st.markdown("*Rumus:* (massa zat / massa larutan) × 100%")
+    st.header("🔹 Persentase Konsentrasi (% b/b)")
+    st.markdown("*Hitung persentase konsentrasi larutan berdasarkan massa zat dan massa total larutan*")
 
-    massa_zat = st.number_input("Massa zat (gram)", min_value=0.0, key="persen_mz")
-    massa_larutan = st.number_input("Massa larutan total (gram)", min_value=0.01, key="persen_ml")
+    # 🔍 Petunjuk Edukatif
+    st.markdown("""
+    <small style='color: #cccccc;'>
+    💡 <b>Petunjuk:</b><br>
+    • Masukkan <b>massa zat terlarut</b> dan <b>massa total larutan</b> (zat + pelarut) dalam gram.<br>
+    • Pastikan massa zat ≤ massa larutan.<br>
+    • Rumus: <code>(massa zat / massa larutan) × 100%</code><br>
+    • Hasil akan menunjukkan konsentrasi dalam persen (% b/b).
+    </small>
+    """, unsafe_allow_html=True)
+
+    massa_zat = st.number_input("Massa zat terlarut (gram)", min_value=0.0, format="%.4f", key="persen_zat")
+    massa_larutan = st.number_input("Massa total larutan (gram)", min_value=0.0, format="%.4f", key="persen_larutan")
+
     col1, col2 = st.columns(2)
 
-    if col1.button("Hitung"):
-        if massa_zat == 0 or massa_larutan == 0:
-            st.warning("⚠️ Masukkan nilai massa zat dan massa larutan yang valid.")
+    if col1.button("Hitung", key="persen_hitung"):
+        if massa_larutan <= 0:
+            st.warning("⚠️ Masukkan massa larutan yang lebih besar dari 0.")
         elif massa_zat > massa_larutan:
-            st.warning("❌ Massa zat tidak boleh lebih besar dari massa larutan.")
+            st.warning("⚠️ Massa zat tidak boleh lebih besar dari massa larutan.")
         else:
             persen = (massa_zat / massa_larutan) * 100
-            st.markdown(f"<div class='custom-output'>Persentase Konsentrasi = {persen:.2f}%</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='custom-output'>Konsentrasi = {persen:.2f}%</div>", unsafe_allow_html=True)
+            st.markdown("""
+            <div style='color: #cccccc; font-size: 14px; margin-top: 10px;'>
+            🔎 <b>Penjelasan:</b><br>
+            • Menggunakan rumus: <code>(massa zat / massa larutan) × 100%</code><br>
+            • ({:.4f} / {:.4f}) × 100% = {:.2f}%
+            </div>
+            """.format(massa_zat, massa_larutan, persen), unsafe_allow_html=True)
 
-    if col2.button("Reset"):
-        for key in ["persen_mz", "persen_ml"]:
+    if col2.button("Reset", key="persen_reset"):
+        for key in ["persen_zat", "persen_larutan"]:
             if key in st.session_state:
                 del st.session_state[key]
         st.rerun()
