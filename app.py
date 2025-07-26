@@ -424,114 +424,106 @@ elif menu == "🧠 Kuis Kimia":
             border-radius: 5px;
             margin-bottom: 10px;
         }
+        .ucapan.sukses {
+            background-color: rgba(0, 255, 128, 0.3);
+            color: #00ff88;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #00ff88;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .ucapan.info {
+            background-color: rgba(255, 255, 0, 0.2);
+            color: #ffe600;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #ffe600;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .ucapan.peringatan {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+            font-weight: bold;
+            padding: 12px;
+            border-left: 5px solid #ff4444;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
         </style>
     """, unsafe_allow_html=True)
 
     if "submitted" not in st.session_state:
         st.session_state["submitted"] = False
 
-    # Pertanyaan Kuis
-    pertanyaan = [
-        {
-            "soal": "1. Apa satuan dari molaritas?",
-            "opsi": ["mol", "mol/L", "gram", "L/mol"],
-            "jawaban": "mol/L",
-            "penjelasan": "Molaritas adalah konsentrasi mol per liter larutan (mol/L)."
-        },
-        {
-            "soal": "2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
-            "opsi": ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"],
-            "jawaban": "0,17 mol",
-            "penjelasan": "Mol = massa/Mr = 10 / 58,5 = 0,17 mol."
-        },
-        {
-            "soal": "3. Rumus pengenceran larutan adalah?",
-            "opsi": ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"],
-            "jawaban": "M1V1 = M2V2",
-            "penjelasan": "Rumus pengenceran: M1V1 = M2V2, dengan M = molaritas, V = volume."
-        },
-        {
-            "soal": "4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah?",
-            "opsi": ["3", "4", "7", "10"],
-            "jawaban": "3",
-            "penjelasan": "pH = -log[H⁺] = -log(10⁻³) = 3."
-        },
-        {
-            "soal": "5. Massa molar dari H₂O adalah?",
-            "opsi": ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"],
-            "jawaban": "18 g/mol",
-            "penjelasan": "H₂ = 2, O = 16 → 2 + 16 = 18 g/mol."
-        },
-        {
-            "soal": "6. Apa rumus mol dari massa dan Mr?",
-            "opsi": ["Mol = Mr × massa", "Mol = massa / Mr", "Mol = volume × Mr", "Mol = massa × volume"],
-            "jawaban": "Mol = massa / Mr",
-            "penjelasan": "Rumus dasar: mol = massa (g) ÷ Mr."
-        },
-        {
-            "soal": "7. Apa rumus konsentrasi % massa?",
-            "opsi": ["massa zat / volume", "massa zat / massa larutan × 100%", "mol / liter", "massa / mol"],
-            "jawaban": "massa zat / massa larutan × 100%",
-            "penjelasan": "Konsentrasi % massa = massa zat / massa larutan × 100%."
-        },
-        {
-            "soal": "8. Air termasuk pelarut apa dalam kimia?",
-            "opsi": ["Pelarut organik", "Pelarut netral", "Pelarut universal", "Pelarut asam"],
-            "jawaban": "Pelarut universal",
-            "penjelasan": "Air disebut pelarut universal karena dapat melarutkan banyak zat."
-        },
-        {
-            "soal": "9. Asam kuat akan terionisasi?",
-            "opsi": ["Sebagian", "Tidak sama sekali", "Sepenuhnya", "Sangat lambat"],
-            "jawaban": "Sepenuhnya",
-            "penjelasan": "Asam kuat → terionisasi sepenuhnya dalam larutan."
-        },
-        {
-            "soal": "10. NaOH termasuk senyawa?",
-            "opsi": ["Asam kuat", "Basa kuat", "Basa lemah", "Garam"],
-            "jawaban": "Basa kuat",
-            "penjelasan": "NaOH → basa kuat yang terionisasi sepenuhnya."
-        },
-    ]
-
-    # Ambil jawaban pengguna
-    jawaban_pengguna = []
-    for i, q in enumerate(pertanyaan):
-        jawaban = st.radio(q["soal"], q["opsi"], key=f"q{i}")
-        jawaban_pengguna.append(jawaban)
+    # --- Soal Kuis ---
+    q1 = st.radio("1. Apa satuan dari molaritas?", ["mol", "mol/L", "gram", "L/mol"], key="q1_submit")
+    q2 = st.radio("2. 10 gram NaCl (Mr = 58,5 g/mol) dilarutkan. Berapa mol yang terlarut?",
+                  ["0,15 mol", "0,17 mol", "0,18 mol", "0,20 mol"], key="q2_submit")
+    q3 = st.radio("3. Rumus pengenceran larutan adalah?",
+                  ["M1 + M2 = V", "M1V1 = M2V2", "M = mol × V", "M1V2 = M2V1"], key="q3_submit")
+    q4 = st.radio("4. Jika H⁺ = 1 × 10⁻³ mol/L, maka pH-nya adalah?",
+                  ["3", "4", "7", "10"], key="q4_submit")
+    q5 = st.radio("5. Massa molar dari H₂O adalah?",
+                  ["16 g/mol", "18 g/mol", "20 g/mol", "10 g/mol"], key="q5_submit")
+    q6 = st.radio("6. Rumus mol dari massa dan Mr adalah?",
+                  ["mol = Mr / massa", "mol = massa / Mr", "mol = M × V", "mol = volume / M"], key="q6_submit")
+    q7 = st.radio("7. Rumus konsentrasi persen massa?",
+                  ["massa zat / massa larutan × 100%", "massa larutan / massa zat × 100%",
+                   "massa zat / volume larutan × 100%", "massa zat × 100%"], key="q7_submit")
+    q8 = st.radio("8. Air dikenal sebagai pelarut apa?",
+                  ["Pelarut asam", "Pelarut basa", "Pelarut universal", "Pelarut lemah"], key="q8_submit")
+    q9 = st.radio("9. Asam kuat akan terionisasi secara?",
+                  ["Sebagian", "Tidak terionisasi", "Sepenuhnya", "Tidak pasti"], key="q9_submit")
+    q10 = st.radio("10. NaOH termasuk senyawa apa?",
+                   ["Asam kuat", "Basa kuat", "Garam", "Pelindung"], key="q10_submit")
 
     if st.button("Submit Jawaban"):
         st.session_state["submitted"] = True
 
     if st.session_state["submitted"]:
         score = 0
-        total_poin = 0
+        point_per_soal = 10
+
         st.markdown("---")
         st.subheader("📋 Hasil Kuis:")
 
-        for i, q in enumerate(pertanyaan):
-            if jawaban_pengguna[i] == q["jawaban"]:
+        jawaban = [
+            (q1, "mol/L", "1. Molaritas satuannya mol/L."),
+            (q2, "0,17 mol", "2. 10 / 58,5 = 0,17 mol."),
+            (q3, "M1V1 = M2V2", "3. Itu rumus pengenceran larutan."),
+            (q4, "3", "4. pH = -log[H⁺] = -log(10⁻³) = 3."),
+            (q5, "18 g/mol", "5. H (2) + O (16) = 18 g/mol."),
+            (q6, "mol = massa / Mr", "6. Rumus dasar mol adalah mol = massa / Mr."),
+            (q7, "massa zat / massa larutan × 100%", "7. Rumus konsentrasi persen massa adalah massa zat / massa larutan × 100%."),
+            (q8, "Pelarut universal", "8. Air adalah pelarut universal karena melarutkan banyak zat."),
+            (q9, "Sepenuhnya", "9. Asam kuat seperti HCl terionisasi sepenuhnya."),
+            (q10, "Basa kuat", "10. NaOH adalah basa kuat yang menghasilkan OH⁻.")
+        ]
+
+        for i, (jawaban_user, kunci, penjelasan) in enumerate(jawaban, start=1):
+            if jawaban_user == kunci:
+                st.markdown(f"<div class='feedback benar'>✅ {i}. Benar! {penjelasan}</div>", unsafe_allow_html=True)
                 score += 1
-                total_poin += 10
-                st.markdown(f"<div class='feedback benar'>✅ {i+1}. Benar! {q['penjelasan']}</div>", unsafe_allow_html=True)
             else:
-                st.markdown(f"<div class='feedback salah'>❌ {i+1}. Salah. {q['penjelasan']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='feedback salah'>❌ {i}. Salah. {penjelasan}</div>", unsafe_allow_html=True)
+
+        total_poin = score * point_per_soal
 
         st.markdown("---")
-        st.markdown(f"**Skor Benar:** {score} dari {len(pertanyaan)} soal")
-        st.markdown(f"**Total Nilai:** {total_poin} poin")
+        st.markdown(f"<div class='custom-output'>Skor akhir kamu: {score} dari 10 soal ({total_poin} poin)</div>", unsafe_allow_html=True)
 
-        if score == len(pertanyaan):
+        if score == 10:
             st.balloons()
-            st.success("🎉 Luar biasa! Kamu menjawab semuanya dengan benar!")
+            st.markdown("<div class='ucapan sukses'>🎉 Hebat! Kamu benar semua, luar biasa!</div>", unsafe_allow_html=True)
         elif score >= 7:
-            st.info("👍 Bagus! Kamu sudah memahami sebagian besar konsep dasar.")
+            st.markdown("<div class='ucapan info'>👍 Bagus! Tinggal sedikit lagi jadi master kimia.</div>", unsafe_allow_html=True)
         else:
-            st.warning("📚 Yuk belajar lagi. Semangat terus ya!")
+            st.markdown("<div class='ucapan peringatan'>📚 Yuk belajar lagi, kamu pasti bisa!</div>", unsafe_allow_html=True)
 
-        if st.button("🔄 Ulangi Kuis"):
-            for key in list(st.session_state.keys()):
-                if key.startswith("q") or key == "submitted":
-                    del st.session_state[key]
+        if st.button("Ulangi Kuis"):
+            for k in list(st.session_state.keys()):
+                if k.startswith("q") or k == "submitted":
+                    del st.session_state[k]
             st.rerun()
-
